@@ -14,7 +14,7 @@ emitter.on('http',()=>{
 
 
 //Raised an event
-emitter.emit('MessageLogged',"Thanks!!");
+emitter.emit('MessageLogged',"This is call for Listener!!");
 
 //Raised an event of http
 emitter.emit('http');
