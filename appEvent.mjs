@@ -8,8 +8,8 @@ emitter.on('MessageLogged',(msg)=>{
 });
 
 //Register a listener - http
-emitter.on('http',()=>{
-    console.log('http listener called!!');
+emitter.on('http',(arg)=>{
+    console.log(`http listener called!!::${arg.url}`);
 });
 
 
@@ -17,4 +17,4 @@ emitter.on('http',()=>{
 emitter.emit('MessageLogged',"This is call for Listener!!");
 
 //Raised an event of http
-emitter.emit('http');
+emitter.emit('http',{id:"1",url:"https://google.com"});

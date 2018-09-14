@@ -1,7 +1,7 @@
 {
   "name": "fundamentals",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project consists of the below,\r 1. Basic understanding of the Node.JS\r 2. Quick Code samples \r 3. How to import modules\r 4. How to create your own module and use it \r 5. Event listener\r 6. File system access",
   "main": "app.js",
   "start": "node app.mjs",
   "dependencies": {
@@ -16,5 +16,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amjadk12/NodeJSFundamentals.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/amjadk12/NodeJSFundamentals/issues"
+  },
+  "homepage": "https://github.com/amjadk12/NodeJSFundamentals#readme"
 }
