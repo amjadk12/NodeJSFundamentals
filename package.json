@@ -6,7 +6,8 @@
   "start": "node app.mjs",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "joi": "^13.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
