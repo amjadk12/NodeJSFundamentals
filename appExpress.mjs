@@ -24,7 +24,7 @@ app.get('/api/customer',(req,res)=>{
 
 app.get('/api/customer/:id',(req,res)=>{
     const cust=custs.find(c=>c.id===parseInt(req.params.id));
-    if(!cust) res.status(404).send(`The customer with this id:${req.params.id} is not available.`);
+    if(!cust) return res.status(404).send(`The customer with this id:${req.params.id} is not available.`);
     res.send(cust);
 });
 
@@ -37,27 +37,18 @@ app.post('/api/customer', (req,res)=>{
     const {error} = validateCust(req.body);
 
     //console.log(result);
-    if(error){
-        let errMsg='';
-        
-        if((error)!==null){
-            errMsg=error.details[0].message;
-            res.status(400).send(errMsg);   
-            return;  
-        }
-    }
+    if(error) return res.status(400).send(error.details[0].message);   
     const cust= {
         id: custs.length+1,
         name: req.body.name
     };
-    console.log(cust);
     custs.push(cust);
     res.send(cust);
 });
 
 app.put('/api/customer/:id',(req,res)=>{
     const cust= custs.find(c=> c.id === parseInt(req.params.id));
-    if(!cust) res.status(404).send(`ID: ${req.params.id} not found in customer`);
+    if(!cust) return res.status(404).send(`ID: ${req.params.id} not found in customer`);
     console.log(`ID: ${req.params.id} is found`);
     
     const {error} = validateCust(req.body);
@@ -66,14 +57,16 @@ app.put('/api/customer/:id',(req,res)=>{
     if(error){
         res.status(400).send(error.details[0].message);
         return;
-        // let errMsg= '';
-        // if(error!==null){
-        //     errMsg= error;
-        //     res.status(400).send(errMsg);
-        //     return;
-        // }
     }
     cust.name= req.body.name;
+    res.send(cust);
+});
+
+app.delete('/api/customer/:id',(req,res)=>{
+    const cust=custs.find(c=>c.id===parseInt(req.params.id));
+    if(!cust) return res.status(404).send(`ID:${req.params.id} not found in customer`);
+    const index=custs.indexOf(cust);
+    custs.splice(index,1);
     res.send(cust);
 });
 
